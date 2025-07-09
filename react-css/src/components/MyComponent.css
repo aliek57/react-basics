@@ -1,0 +1,31 @@
+.my-component-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #3f1071;
+    text-align: center;
+    margin-top: 20px;
+
+}
+
+.my-component-text {
+    font-size: 20px;
+    color: #333;
+    margin: 10px 0;
+}
+
+.my-component-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.my-component-button:hover {
+  background-color: #45a049;
+}
