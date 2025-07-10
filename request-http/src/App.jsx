@@ -1,56 +1,64 @@
 import './App.css'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useFetch } from './hooks/useFetch'
 
 function App() {
   const url = 'http://localhost:3000/produtos'
-  const [produtos, setProdutos] = useState([]);
   const [nome, setNome] = useState('');
   const [preco, setPreco] = useState('');
+  const [editId, setEditId] = useState(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(url);
-        if (!response.ok) {
-          throw new Error('Recurso não encontrado');
-        }
-        const data = await response.json();
-        setProdutos(data);
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
-    fetchData();
-  }, [])
+  const { data: items, postData, putData, deleteData, loading, error } = useFetch(url);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const novoProduto = { nome, preco: parseFloat(preco) };
-    
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(novoProduto),
-    })
-    
+    if (!nome.trim()) return;
+    const produto = { nome, preco: parseFloat(preco) };
+
+    if (editId) {
+      await putData(editId, produto);
+      setEditId(null);
+    } else {
+      await postData(produto);
+    }
+
     setNome('');
     setPreco('');
+  }
+
+  const handleDelete = async (id) => {
+    await deleteData(id);
+    if (editId === id) {
+      setEditId(null);
+      setNome('');
+      setPreco('');
+    }
+  }
+
+  const handleEdit = (produto) => {
+    setEditId(produto.id);
+    setNome(produto.nome);
+    setPreco(produto.preco);
   }
 
   return (
     <div className="App">
       <h1>Lista de Produtos</h1>
+      {loading && <p>Carregando...</p>}
+      {error && <p style={{color: 'red'}}>{error}</p>}
       <ul>
-        {produtos.map(produto => (
-          <li key={produto.id}>
-            {produto.nome} - R$ {produto.preco.toFixed(2)}
-          </li>
-        ))}
+        {(Array.isArray(items) ? items : [])
+          .filter(produto => produto && produto.id && produto.nome)
+          .map(produto => (
+            <li key={produto.id}>
+              {produto.nome} - R$ {produto.preco ? produto.preco.toFixed(2) : '0.00'}
+              <button onClick={() => handleEdit(produto)}>Editar</button>
+              <button onClick={() => handleDelete(produto.id)}>Deletar</button>
+            </li>
+          ))}
       </ul>
       <div className="addProduto">
-        <h2>Adicionar Produto</h2>
+        <h2>{editId ? 'Editar Produto' : 'Adicionar Produto'}</h2>
         <form onSubmit={handleSubmit}>
           <label>
             Nome:
@@ -72,7 +80,14 @@ function App() {
               required
             />
           </label>
-          <button type="submit">Adicionar</button>
+          <button type="submit" disabled={loading}>
+            {editId ? 'Salvar' : 'Adicionar'}
+          </button>
+          {editId && (
+            <button type="button" onClick={() => { setEditId(null); setNome(''); setPreco(''); }}>
+              Cancelar
+            </button>
+          )}
         </form>
       </div>
     </div>

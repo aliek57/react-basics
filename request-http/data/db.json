@@ -16,9 +16,24 @@
       "preco": 29.9
     },
     {
-      "id": "b765",
+      "id": "95d0",
+      "nome": "vestido",
+      "preco": 50
+    },
+    {
+      "id": "d284",
+      "nome": "mouse",
+      "preco": 150
+    },
+    {
+      "id": "7011",
+      "nome": "teclado",
+      "preco": 110
+    },
+    {
       "nome": "teste",
-      "preco": 100
+      "preco": 100,
+      "id": "cb66"
     }
   ]
 }
