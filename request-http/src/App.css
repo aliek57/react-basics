@@ -11,6 +11,17 @@ ul {
   margin-bottom: 32px;
 }
 
+li .item {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+li .item span:first-child {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
 li {
   display: flex;
   align-items: center;
