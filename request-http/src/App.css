@@ -5,44 +5,38 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 32px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f7f7f7;
+  margin-bottom: 10px;
+  padding: 12px 16px;
+  border-radius: 6px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+li button {
+  background: #1d6cbc;
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+li button:last-child {
+  background: #c81212;
 }
 
 .addProduto {
-  border-top: 1px solid #000;
+  background: #f7f7f7;
+  padding: 18px;
+  border-radius: 8px;
+}
+
+.addProduto h2 {
+  margin-top: 0;
 }
 
 .addProduto form {
@@ -55,4 +49,19 @@
   margin: 0.5em;
   padding: 0.5em;
   width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button[type="submit"] {
+  background: #2a8f2f;
+}
+
+button[type="button"] {
+  background: #c81212;
+}
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

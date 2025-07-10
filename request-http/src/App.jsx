@@ -51,9 +51,11 @@ function App() {
           .filter(produto => produto && produto.id && produto.nome)
           .map(produto => (
             <li key={produto.id}>
-              {produto.nome} - R$ {produto.preco ? produto.preco.toFixed(2) : '0.00'}
-              <button onClick={() => handleEdit(produto)}>Editar</button>
-              <button onClick={() => handleDelete(produto.id)}>Deletar</button>
+              {produto.nome} - R${produto.preco ? produto.preco.toFixed(2) : '0.00'}
+              <div>
+                <button onClick={() => handleEdit(produto)}>Editar</button>
+                <button onClick={() => handleDelete(produto.id)}>Deletar</button>
+              </div>
             </li>
           ))}
       </ul>
