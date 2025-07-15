@@ -6,6 +6,7 @@ import Home from './pages/Home/Home'
 import About from './pages/About/About'
 import User from './pages/User/User'
 import Edit from './pages/Edit/Edit'
+import NotFound from './pages/NotFound/NotFound'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route path='/about' element={<About />} />
           <Route path='/usuarios/:id' element={<User />} />
           <Route path='/usuarios/:id/editar' element={<Edit />} />
+          <Route path='*' element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </>
