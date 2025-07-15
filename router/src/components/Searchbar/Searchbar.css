@@ -1,0 +1,15 @@
+form {
+    margin: 1.5rem 0;
+}
+
+ .searchInput {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 220px;
+}
+
+.btnSearch {
+    background: #4c4d4c;
+    margin-left: 1rem;
+}

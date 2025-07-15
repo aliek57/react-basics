@@ -47,8 +47,8 @@ const Edit = () => {
                         <input type="text" name="profissao" defaultValue={user.profissao} required />
                     </label>
                     <div className="btns">
-                        <button type="button" onClick={() => window.history.back()}>Voltar</button>
-                        <button type="submit">Salvar</button>
+                        <button type="button" onClick={() => window.history.back()} className='btnBack'>Voltar</button>
+                        <button type="submit" className='btnSave'>Salvar</button>
                     </div>
                 </form>
             )}

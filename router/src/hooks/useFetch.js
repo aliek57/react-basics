@@ -68,8 +68,14 @@ export const useFetch = (url) => {
     }, [url, fetchData]);
 
     useEffect(() => {
-        fetchData();
-    }, [fetchData]);
+        if (!url) {
+        setData(null);
+        setLoading(false);
+        setError(null);
+        return;
+    }
+    fetchData();
+    }, [fetchData, url]);
 
     return { data, error, loading, fetchData, postData, putData, deleteData };
 }
