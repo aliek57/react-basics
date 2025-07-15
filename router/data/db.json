@@ -1,0 +1,22 @@
+{
+  "usuarios": [
+    {
+      "id": "1",
+      "nome": "João",
+      "idade": 28,
+      "profissao": "Advogado"
+    },
+    {
+      "id": "2",
+      "nome": "Karina",
+      "idade": 27,
+      "profissao": "Médica"
+    },
+    {
+      "id": "3",
+      "nome": "Keila",
+      "idade": 26,
+      "profissao": "Desenvolvedora"
+    }
+  ]
+}
