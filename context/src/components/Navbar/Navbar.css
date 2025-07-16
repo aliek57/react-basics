@@ -1,0 +1,14 @@
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+nav a {
+    margin: 0 1rem;
+    padding: 5px;
+}
+
+.active {
+    border-bottom: 2px solid #d15807;
+    color: #161a6d;
+}
